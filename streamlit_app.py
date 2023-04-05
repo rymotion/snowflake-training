@@ -13,6 +13,7 @@ fruit_macros = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com
 fruit_macros = fruit_macros.set_index('Fruit')
 
 # add picker
-streamlit.multiselect("Pick some fruits:", list(fruit_macros.index), ['Avocado', 'Strawberries'])
+fruit_selected = streamlit.multiselect("Pick some fruits:", list(fruit_macros.index), ['Avocado', 'Strawberries'])
+fruit_macros = fruit_macros.loc[fruit_selected]
 
 streamlit.dataframe(fruit_macros)
